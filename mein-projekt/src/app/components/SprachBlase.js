@@ -2,76 +2,79 @@
 
 import { motion } from "framer-motion";
 
-const SpeechBubble = ({
-  children,
-  position = "bottom-left",
-  className = "",
-  animate = true,
-  delay = 0,
-}) => {
-  const getArrowClasses = () => {
+const SpeechBubble = ({ children, position = "left", className = "" }) => {
+  // SVG Pfeil basierend auf Position
+  const renderArrow = () => {
     switch (position) {
-      case "bottom-left":
-        return "bottom-0 left-6 translate-y-full";
-      case "bottom-right":
-        return "bottom-0 right-6 translate-y-full";
-      case "top-left":
-        return "top-0 left-6 -translate-y-full rotate-180";
-      case "top-right":
-        return "top-0 right-6 -translate-y-full rotate-180";
       case "left":
-        return "left-0 top-1/2 -translate-y-1/2 -translate-x-full -rotate-90";
+        return (
+          <div className="absolute left-0 top-1/2 -translate-x-full -translate-y-1/2">
+            <svg width="12" height="20" viewBox="0 0 12 20" fill="none">
+              <path d="M12 10L0 0V20L12 10Z" fill="#f3f4f6" />
+            </svg>
+          </div>
+        );
+
       case "right":
-        return "right-0 top-1/2 -translate-y-1/2 translate-x-full rotate-90";
+        return (
+          <div className="absolute right-0 top-1/2 translate-x-full -translate-y-1/2">
+            <svg width="12" height="20" viewBox="0 0 12 20" fill="none">
+              <path d="M0 10L12 0V20L0 10Z" fill="#f3f4f6" />
+            </svg>
+          </div>
+        );
+
+      case "top-left":
+        return (
+          <div className="absolute top-0 left-6 -translate-y-full">
+            <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+              <path d="M8 0L0 12H16L8 0Z" fill="#f3f4f6" />
+            </svg>
+          </div>
+        );
+
+      case "top-right":
+        return (
+          <div className="absolute top-0 right-6 -translate-y-full">
+            <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+              <path d="M8 0L0 12H16L8 0Z" fill="#f3f4f6" />
+            </svg>
+          </div>
+        );
+
+      case "bottom-left":
+        return (
+          <div className="absolute bottom-0 left-6 translate-y-full">
+            <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+              <path d="M8 12L0 0H16L8 12Z" fill="#f3f4f6" />
+            </svg>
+          </div>
+        );
+
+      case "bottom-right":
+        return (
+          <div className="absolute bottom-0 right-6 translate-y-full">
+            <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+              <path d="M8 12L0 0H16L8 12Z" fill="#f3f4f6" />
+            </svg>
+          </div>
+        );
+
       default:
-        return "bottom-0 left-6 translate-y-full";
+        return null;
     }
   };
 
-  const bubbleVariants = {
-    hidden: {
-      opacity: 0,
-      scale: 0.8,
-      y: 20,
-    },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut",
-        delay: delay,
-      },
-    },
-  };
-
   return (
-    <motion.div
-      className={`relative inline-block ${className}`}
-      variants={animate ? bubbleVariants : {}}
-      initial={animate ? "hidden" : {}}
-      animate={animate ? "visible" : {}}
-    >
-      {/* Hauptblase */}
-      <div className="bg-gray-100 text-gray-800 px-4 py-3 rounded-2xl shadow-lg max-w-xs sm:max-w-sm relative">
-        <div className="text-sm leading-relaxed">{children}</div>
+    <div className={`relative inline-block ${className}`}>
+      {/* Sprechblase */}
+      <div className="bg-gray-100 text-gray-800 px-4 py-3 rounded-2xl shadow-lg max-w-xs whitespace-nowrap">
+        <div className="text-sm font-medium">{children}</div>
       </div>
 
-      {/* Pfeil/Tail */}
-      <div className={`absolute w-0 h-0 ${getArrowClasses()}`}>
-        <svg
-          width="16"
-          height="8"
-          viewBox="0 0 16 8"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="drop-shadow-sm"
-        >
-          <path d="M8 8L0 0H16L8 8Z" fill="#f3f4f6" />
-        </svg>
-      </div>
-    </motion.div>
+      {/* Pfeil */}
+      {renderArrow()}
+    </div>
   );
 };
 

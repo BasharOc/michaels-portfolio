@@ -1,3 +1,8 @@
+"use client";
+
+import CardCarousel from "./components/CardCarousel";
+import ProfilBild from "./components/ProfilBild";
+import ProjectCarousel from "./components/ProjectCarousel";
 import SpeechBubble from "./components/SprachBlase";
 import Wave from "./components/Wave";
 import WaveMobile from "./components/WaveMobile";
@@ -14,9 +19,9 @@ export default function Home() {
         <WaveMobile />
       </div>
 
-      <SpeechBubble delay={0.5} animate={true}>
-        Schau dir meine Projekte an!
-      </SpeechBubble>
+      <ProfilBild />
+      {/* <ProjectCarousel projects={projects} /> */}
+      <CardCarousel />
     </>
   );
 }
