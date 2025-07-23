@@ -11,45 +11,40 @@ const CardCarousel = ({ projects }) => {
   // Default projects
   const defaultProjects = [
     {
-      id: 1,
-      title: "E-Commerce Platform",
+      title: "Scool Drive",
+      link: "https://fahrschule-lg.scooldrive.com/",
+      image: "scool-drive.png",
+      technologies: ["React", "Tailwind", "MongoDb"],
+      description: "Modern website for innovative driving school services.",
+    },
+    {
+      title: "Pure Nature",
+      link: "https://pure-nature.basharfarhat.com/",
+      image: "pure-nature.png",
+      technologies: ["React", "Tailwind", "Framermotion"],
+      description: "Clean portfolio design with a beautiful natural focus.",
+    },
+    {
+      title: "Hair & style",
+      link: "https://hair-style.basharfarhat.com/",
+      image: "hair-style.png",
+      technologies: ["React", "Tailwind", "Framermotion"],
       description:
-        "Eine moderne E-Commerce-Lösung mit React und Node.js entwickelt.",
-      image: "/images/project1.jpg",
-      technologies: ["React", "Node.js", "MongoDB"],
-      link: "#",
+        "Modern website for a creative hair salon and beauty services.",
     },
     {
-      id: 2,
-      title: "Portfolio Website",
-      description: "Responsive Portfolio-Website mit Next.js und Tailwind CSS.",
-      image: "/images/project2.jpg",
-      technologies: ["Next.js", "Tailwind", "Framer Motion"],
-      link: "#",
+      title: "Alex fitnes",
+      link: "https://alex-fitness.basharfarhat.com/",
+      image: "alex-fitness.png",
+      technologies: ["React", "Tailwind", "Framermotion"],
+      description: "Personal fitness studio with an engaging online presence.",
     },
     {
-      id: 3,
-      title: "Task Manager App",
-      description: "Produktivitäts-App mit Drag & Drop Funktionalität.",
-      image: "/images/project3.jpg",
-      technologies: ["React", "TypeScript", "Firebase"],
-      link: "#",
-    },
-    {
-      id: 4,
-      title: "Weather Dashboard",
-      description: "Interaktives Wetter-Dashboard mit API-Integration.",
-      image: "/images/project4.jpg",
-      technologies: ["Vue.js", "Chart.js", "OpenWeather API"],
-      link: "#",
-    },
-    {
-      id: 5,
-      title: "Social Media App",
-      description: "Social Media Plattform mit Echtzeit-Chat Funktionalität.",
-      image: "/images/project5.jpg",
-      technologies: ["React Native", "Socket.io", "Express"],
-      link: "#",
+      title: "Café am Markt",
+      technologies: ["Wordpress", "Elementor", "Copy writing"],
+      link: "https://demo-project-cafe.setupyourweb.com/",
+      image: "cafe-am-markt.png",
+      description: "Cozy café website featuring local specialties daily.",
     },
   ];
 
@@ -142,7 +137,7 @@ const CardCarousel = ({ projects }) => {
           transition={{ duration: 0.6 }}
           className="text-4xl font-bold text-black mb-4"
         >
-          Meine Projekte
+          My Projects
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: -20 }}
@@ -150,7 +145,7 @@ const CardCarousel = ({ projects }) => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-gray-600 text-lg"
         >
-          Eine Auswahl meiner neuesten Arbeiten
+          A selection of my latest work
         </motion.p>
       </div>
 
@@ -242,7 +237,7 @@ const CardCarousel = ({ projects }) => {
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                   className="group"
                 >
-                  <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#558C8C]/20 transform hover:-translate-y-2">
+                  <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#558C8C]/20 transform hover:-translate-y-2 overflow-hidden">
                     {/* Project Image */}
                     <div className="relative h-48 bg-gradient-to-br from-[#558C8C] to-[#E8DB7D]">
                       {project.image && (
@@ -284,7 +279,7 @@ const CardCarousel = ({ projects }) => {
                         onClick={() => window.open(project.link, "_blank")}
                         className="w-full bg-[#CDCDCD] hover:bg-[#558C8C] text-gray-700 hover:text-white py-3 px-4 rounded-xl font-medium transition-all duration-200 hover:shadow-lg transform hover:scale-[1.02] active:scale-[0.98]"
                       >
-                        Projekt ansehen
+                        See Project
                       </button>
                     </div>
                   </div>
