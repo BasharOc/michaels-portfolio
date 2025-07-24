@@ -6,12 +6,14 @@ import { motion, AnimatePresence } from "framer-motion";
 const CardCarousel = ({ projects }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [direction, setDirection] = useState(0); // 1 for next, -1 for prev
   const touchStartX = useRef(0);
 
   // Default projects
   const defaultProjects = [
     {
       title: "Scool Drive",
+      id: "KJs",
       link: "https://fahrschule-lg.scooldrive.com/",
       image: "scool-drive.png",
       technologies: ["React", "Tailwind", "MongoDb"],
@@ -19,6 +21,7 @@ const CardCarousel = ({ projects }) => {
     },
     {
       title: "Pure Nature",
+      id: "KJgs",
       link: "https://pure-nature.basharfarhat.com/",
       image: "pure-nature.png",
       technologies: ["React", "Tailwind", "Framermotion"],
@@ -26,6 +29,7 @@ const CardCarousel = ({ projects }) => {
     },
     {
       title: "Hair & style",
+      id: "KJ4s",
       link: "https://hair-style.basharfarhat.com/",
       image: "hair-style.png",
       technologies: ["React", "Tailwind", "Framermotion"],
@@ -34,6 +38,7 @@ const CardCarousel = ({ projects }) => {
     },
     {
       title: "Alex fitnes",
+      id: "K2Js",
       link: "https://alex-fitness.basharfarhat.com/",
       image: "alex-fitness.png",
       technologies: ["React", "Tailwind", "Framermotion"],
@@ -41,6 +46,7 @@ const CardCarousel = ({ projects }) => {
     },
     {
       title: "Café am Markt",
+      id: "KJ3s",
       technologies: ["Wordpress", "Elementor", "Copy writing"],
       link: "https://demo-project-cafe.setupyourweb.com/",
       image: "cafe-am-markt.png",
@@ -62,6 +68,7 @@ const CardCarousel = ({ projects }) => {
 
   // Navigation
   const nextSlide = () => {
+    setDirection(1);
     if (isMobile) {
       setCurrentIndex((prev) => (prev + 1) % projectsData.length);
     } else {
@@ -74,6 +81,7 @@ const CardCarousel = ({ projects }) => {
   };
 
   const prevSlide = () => {
+    setDirection(-1);
     if (isMobile) {
       setCurrentIndex(
         (prev) => (prev - 1 + projectsData.length) % projectsData.length
@@ -127,6 +135,24 @@ const CardCarousel = ({ projects }) => {
     return visible;
   };
 
+  // Mobile animation variants
+  const slideVariants = {
+    enter: (direction) => ({
+      x: direction > 0 ? 300 : -300,
+      opacity: 0,
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction) => ({
+      zIndex: 0,
+      x: direction < 0 ? 300 : -300,
+      opacity: 0,
+    }),
+  };
+
   return (
     <div className="w-full max-w-6xl mx-auto px-6 py-8">
       {/* Header */}
@@ -161,7 +187,7 @@ const CardCarousel = ({ projects }) => {
                        canGoPrev
                          ? "bg-white hover:bg-gray-50 hover:shadow-xl"
                          : "bg-gray-100 cursor-not-allowed opacity-50"
-                     }`}
+                     }  ${isMobile ? "hidden" : ""}`}
         >
           <svg
             className={`w-6 h-6 transition-colors ${
@@ -191,7 +217,7 @@ const CardCarousel = ({ projects }) => {
                        canGoNext
                          ? "bg-white hover:bg-gray-50 hover:shadow-xl"
                          : "bg-gray-100 cursor-not-allowed opacity-50"
-                     }`}
+                     } ${isMobile ? "hidden" : ""}`}
         >
           <svg
             className={`w-6 h-6 transition-colors ${
@@ -218,12 +244,14 @@ const CardCarousel = ({ projects }) => {
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
-          <AnimatePresence mode="wait">
+          <AnimatePresence initial={false} custom={direction} mode="wait">
             <motion.div
               key={currentIndex}
-              initial={{ opacity: 0, x: 300 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -300 }}
+              custom={direction}
+              variants={isMobile ? slideVariants : undefined}
+              initial={isMobile ? "enter" : { opacity: 0, x: 300 }}
+              animate={isMobile ? "center" : { opacity: 1, x: 0 }}
+              exit={isMobile ? "exit" : { opacity: 0, x: -300 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
               className={`grid gap-6 ${
                 isMobile ? "grid-cols-1" : "grid-cols-1 md:grid-cols-3"
@@ -342,7 +370,7 @@ const CardCarousel = ({ projects }) => {
                   d="M7 16l-4-4m0 0l4-4m-4 4h18"
                 />
               </svg>
-              Wischen zum Navigieren
+              Swipe to navigate
               <svg
                 className="w-4 h-4"
                 fill="none"

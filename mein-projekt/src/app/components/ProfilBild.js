@@ -72,7 +72,7 @@ const ProfilBild = ({ imageSrc = "/ich.png", name = "Bashar" }) => {
           </motion.div>
 
           {/* Sprechblasen - absolut im Bild-Container */}
-          <div className="absolute top-full left-1/2 md:left-1/2 left-3/4 transform -translate-x-1/2 mt-4">
+          <div className="absolute top-full left-1/2 md:left-1/2 left-4/4 transform -translate-x-1/2 mt-4">
             <AnimatePresence mode="wait">
               {currentBubble === "first" && (
                 <motion.div

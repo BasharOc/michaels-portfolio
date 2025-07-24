@@ -10,34 +10,33 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
 export const metadata = {
-  title: "Michael Müller – Portfolio Webentwickler",
+  title: "Bashar F – Portfolio Web Developer",
   description:
-    "Portfolio von Michael Müller, moderner Frontend Developer aus Lüneburg. Projekte, Skills, Kontakt.",
-  keywords: ["Webentwicklung", "Portfolio", "React", "Next.js", "Lüneburg"],
+    "Portfolio of Bashar, a modern frontend developer based in Lüneburg. Projects, skills, contact information.",
+  keywords: ["Web development", "Portfolio", "React", "Next.js", "Lüneburg"],
   openGraph: {
-    title: "Michael Müller – Portfolio Webentwickler",
+    title: "Bashar – Portfolio Web Developer",
     description:
-      "Portfolio von Michael Müller, moderner Frontend Developer aus Lüneburg.",
-    url: "https://deinedomain.de",
-    siteName: "Michael Müller Portfolio",
+      "Portfolio of Michael Müller, a modern frontend developer based in Lüneburg.",
+    url: "https://yourdomain.com", // Change to your real domain
+    siteName: "Bashar Portfolio",
     images: [
       {
-        url: "/og-image.png", // Im /public Ordner ablegen
+        url: "/og-image.png", // Place in your /public folder
         width: 1200,
         height: 630,
-        alt: "Portfolio von Michael Müller",
+        alt: "Portfolio of Bashar",
       },
     ],
-    locale: "de_DE",
+    locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Michael Müller – Portfolio Webentwickler",
+    title: "Bashar – Portfolio Web Developer",
     description:
-      "Portfolio von Michael Müller, moderner Frontend Developer aus Lüneburg.",
+      "Portfolio of Bashar, a modern frontend developer based in Lüneburg.",
     images: ["/og-image.png"],
   },
   robots: "index, follow",

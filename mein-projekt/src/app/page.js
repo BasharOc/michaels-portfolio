@@ -2,7 +2,6 @@
 
 import CardCarousel from "./components/CardCarousel";
 import ProfilBild from "./components/ProfilBild";
-import ProjectCarousel from "./components/ProjectCarousel";
 import SpeechBubble from "./components/SprachBlase";
 import Wave from "./components/Wave";
 import WaveMobile from "./components/WaveMobile";
